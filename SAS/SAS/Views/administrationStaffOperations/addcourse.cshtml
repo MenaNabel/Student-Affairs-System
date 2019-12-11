@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "addCourse";
+    Layout = "~/Views/Shared/_LayoutUniversity.cshtml";
+}
+
+    <form method="post" action="/administrationStaffOperations/addCourse">
+        <input type="text" name="course_code" class="form-control" placeholder="course code" />
+        <input type="text" name="course_name" class="form-control" placeholder="course name" />
+        <input type="text" name="doctor_name" class="form-control" placeholder="doctor name" />
+        course level :
+        <select name="course_level">
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select><br />
+        course semester :
+        <select name="course_semester">
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select><br />
+        course hours :
+        <select name="course_hours">
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select><br />
+        <input type="submit" value="ADD" />
+    </form>
+<a href="~/home/Index">Home</a>
+
+
+

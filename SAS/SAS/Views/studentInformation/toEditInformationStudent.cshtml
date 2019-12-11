@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "toEditInformationStudent";
+    Layout = "~/Views/Shared/_LayoutUniversity.cshtml";
+}
+
+<h2>toEditInformationStudent</h2>
+
+<div>
+    <form method="get" action="~/studentInformation/editInformationStudent">
+        <input type="text" name="student_ID" class="form-control" placeholder="Enter Student ID" />
+        <input type="submit" value="go" />
+    </form>
+    <a href="~/home/Index">Home</a>
+</div>

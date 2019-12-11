@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Student_Affairs_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin_student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_ID" Type="varchar" MaxLength="10" />
+          <Property Name="administration_staff_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="administration_staff">
+          <Key>
+            <PropertyRef Name="administration_staff_ID" />
+          </Key>
+          <Property Name="administration_staff_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="administration_staff_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="administration_staff_national_ID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="administration_staff_password" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="course_code" />
+          </Key>
+          <Property Name="course_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="course_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="course_level" Type="int" Nullable="false" />
+          <Property Name="course_semester" Type="int" Nullable="false" />
+          <Property Name="doctor_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="course_hours" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="prequest_course">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pre_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="course_ID" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="student_ID" />
+          </Key>
+          <Property Name="student_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="student_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="student_national_ID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="student_level" Type="int" Nullable="false" />
+          <Property Name="student_age" Type="int" Nullable="false" />
+          <Property Name="student_phone" Type="varchar" MaxLength="11" />
+          <Property Name="student_adress" Type="varchar" MaxLength="255" />
+          <Property Name="student_email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="student_available_course">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="course_ID" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student_case_report">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="course_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="total_degree" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="GPA" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="appreciation" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="student_degree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="course_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="activites" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="practical" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="final" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="appreciation" Type="varchar" MaxLength="2" />
+          <Property Name="midterm" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="GPA" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__admin_stu__admin__693CA210">
+          <End Role="administration_staff" Type="Self.administration_staff" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="admin_student" Type="Self.admin_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="administration_staff">
+              <PropertyRef Name="administration_staff_ID" />
+            </Principal>
+            <Dependent Role="admin_student">
+              <PropertyRef Name="administration_staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__admin_stu__stude__68487DD7">
+          <End Role="student" Type="Self.student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="admin_student" Type="Self.admin_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="admin_student">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__prequest___cours__66603565">
+          <End Role="course" Type="Self.course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="prequest_course" Type="Self.prequest_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="prequest_course">
+              <PropertyRef Name="course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__prequest___pre_I__656C112C">
+          <End Role="course" Type="Self.course" Multiplicity="1" />
+          <End Role="prequest_course" Type="Self.prequest_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="prequest_course">
+              <PropertyRef Name="pre_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_a__stude__52593CB8">
+          <End Role="student" Type="Self.student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_available_course" Type="Self.student_available_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="student_available_course">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_c__cours__5070F446">
+          <End Role="course" Type="Self.course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_case_report" Type="Self.student_case_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="student_case_report">
+              <PropertyRef Name="course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_c__stude__4F7CD00D">
+          <End Role="student" Type="Self.student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_case_report" Type="Self.student_case_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="student_case_report">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_d__cours__5629CD9C">
+          <End Role="course" Type="Self.course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_degree" Type="Self.student_degree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="student_degree">
+              <PropertyRef Name="course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_d__stude__5535A963">
+          <End Role="student" Type="Self.student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_degree" Type="Self.student_degree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="student_degree">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Student_Affairs_SystemModelStoreContainer">
+          <EntitySet Name="admin_student" EntityType="Self.admin_student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="administration_staff" EntityType="Self.administration_staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="course" EntityType="Self.course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prequest_course" EntityType="Self.prequest_course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student_available_course" EntityType="Self.student_available_course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student_case_report" EntityType="Self.student_case_report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student_degree" EntityType="Self.student_degree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__admin_stu__admin__693CA210" Association="Self.FK__admin_stu__admin__693CA210">
+            <End Role="administration_staff" EntitySet="administration_staff" />
+            <End Role="admin_student" EntitySet="admin_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__admin_stu__stude__68487DD7" Association="Self.FK__admin_stu__stude__68487DD7">
+            <End Role="student" EntitySet="student" />
+            <End Role="admin_student" EntitySet="admin_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__prequest___cours__66603565" Association="Self.FK__prequest___cours__66603565">
+            <End Role="course" EntitySet="course" />
+            <End Role="prequest_course" EntitySet="prequest_course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__prequest___pre_I__656C112C" Association="Self.FK__prequest___pre_I__656C112C">
+            <End Role="course" EntitySet="course" />
+            <End Role="prequest_course" EntitySet="prequest_course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_a__stude__52593CB8" Association="Self.FK__student_a__stude__52593CB8">
+            <End Role="student" EntitySet="student" />
+            <End Role="student_available_course" EntitySet="student_available_course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_c__cours__5070F446" Association="Self.FK__student_c__cours__5070F446">
+            <End Role="course" EntitySet="course" />
+            <End Role="student_case_report" EntitySet="student_case_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_c__stude__4F7CD00D" Association="Self.FK__student_c__stude__4F7CD00D">
+            <End Role="student" EntitySet="student" />
+            <End Role="student_case_report" EntitySet="student_case_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_d__cours__5629CD9C" Association="Self.FK__student_d__cours__5629CD9C">
+            <End Role="course" EntitySet="course" />
+            <End Role="student_degree" EntitySet="student_degree" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_d__stude__5535A963" Association="Self.FK__student_d__stude__5535A963">
+            <End Role="student" EntitySet="student" />
+            <End Role="student_degree" EntitySet="student_degree" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Student_Affairs_SystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin_student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="administration_staff_ID" Type="Int32" />
+          <NavigationProperty Name="administration_staff" Relationship="Self.FK__admin_stu__admin__693CA210" FromRole="admin_student" ToRole="administration_staff" />
+          <NavigationProperty Name="student" Relationship="Self.FK__admin_stu__stude__68487DD7" FromRole="admin_student" ToRole="student" />
+        </EntityType>
+        <EntityType Name="administration_staff">
+          <Key>
+            <PropertyRef Name="administration_staff_ID" />
+          </Key>
+          <Property Name="administration_staff_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="administration_staff_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="administration_staff_national_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="administration_staff_password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="admin_student" Relationship="Self.FK__admin_stu__admin__693CA210" FromRole="administration_staff" ToRole="admin_student" />
+        </EntityType>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="course_code" />
+          </Key>
+          <Property Name="course_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="course_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="course_level" Type="Int32" Nullable="false" />
+          <Property Name="course_semester" Type="Int32" Nullable="false" />
+          <Property Name="doctor_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="course_hours" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="prequest_course" Relationship="Self.FK__prequest___cours__66603565" FromRole="course" ToRole="prequest_course" />
+          <NavigationProperty Name="prequest_course1" Relationship="Self.FK__prequest___pre_I__656C112C" FromRole="course" ToRole="prequest_course" />
+          <NavigationProperty Name="student_case_report" Relationship="Self.FK__student_c__cours__5070F446" FromRole="course" ToRole="student_case_report" />
+          <NavigationProperty Name="student_degree" Relationship="Self.FK__student_d__cours__5629CD9C" FromRole="course" ToRole="student_degree" />
+        </EntityType>
+        <EntityType Name="prequest_course">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pre_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="course_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="course" Relationship="Self.FK__prequest___cours__66603565" FromRole="prequest_course" ToRole="course" />
+          <NavigationProperty Name="course1" Relationship="Self.FK__prequest___pre_I__656C112C" FromRole="prequest_course" ToRole="course" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="student_ID" />
+          </Key>
+          <Property Name="student_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="student_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="student_national_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="student_level" Type="Int32" Nullable="false" />
+          <Property Name="student_age" Type="Int32" Nullable="false" />
+          <Property Name="student_phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="student_adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="student_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="admin_student" Relationship="Self.FK__admin_stu__stude__68487DD7" FromRole="student" ToRole="admin_student" />
+          <NavigationProperty Name="student_available_course" Relationship="Self.FK__student_a__stude__52593CB8" FromRole="student" ToRole="student_available_course" />
+          <NavigationProperty Name="student_case_report" Relationship="Self.FK__student_c__stude__4F7CD00D" FromRole="student" ToRole="student_case_report" />
+          <NavigationProperty Name="student_degree" Relationship="Self.FK__student_d__stude__5535A963" FromRole="student" ToRole="student_degree" />
+        </EntityType>
+        <EntityType Name="student_available_course">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="course_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student" Relationship="Self.FK__student_a__stude__52593CB8" FromRole="student_available_course" ToRole="student" />
+        </EntityType>
+        <EntityType Name="student_case_report">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="course_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="total_degree" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GPA" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="appreciation" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="course" Relationship="Self.FK__student_c__cours__5070F446" FromRole="student_case_report" ToRole="course" />
+          <NavigationProperty Name="student" Relationship="Self.FK__student_c__stude__4F7CD00D" FromRole="student_case_report" ToRole="student" />
+        </EntityType>
+        <EntityType Name="student_degree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="course_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="activites" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="practical" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="final" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="appreciation" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="midterm" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GPA" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="course" Relationship="Self.FK__student_d__cours__5629CD9C" FromRole="student_degree" ToRole="course" />
+          <NavigationProperty Name="student" Relationship="Self.FK__student_d__stude__5535A963" FromRole="student_degree" ToRole="student" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__admin_stu__admin__693CA210">
+          <End Role="administration_staff" Type="Self.administration_staff" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="admin_student" Type="Self.admin_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="administration_staff">
+              <PropertyRef Name="administration_staff_ID" />
+            </Principal>
+            <Dependent Role="admin_student">
+              <PropertyRef Name="administration_staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__admin_stu__stude__68487DD7">
+          <End Role="student" Type="Self.student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="admin_student" Type="Self.admin_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="admin_student">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__prequest___cours__66603565">
+          <End Role="course" Type="Self.course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="prequest_course" Type="Self.prequest_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="prequest_course">
+              <PropertyRef Name="course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__prequest___pre_I__656C112C">
+          <End Role="course" Type="Self.course" Multiplicity="1" />
+          <End Role="prequest_course" Type="Self.prequest_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="prequest_course">
+              <PropertyRef Name="pre_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_c__cours__5070F446">
+          <End Role="course" Type="Self.course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_case_report" Type="Self.student_case_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="student_case_report">
+              <PropertyRef Name="course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_d__cours__5629CD9C">
+          <End Role="course" Type="Self.course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_degree" Type="Self.student_degree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="student_degree">
+              <PropertyRef Name="course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_a__stude__52593CB8">
+          <End Role="student" Type="Self.student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_available_course" Type="Self.student_available_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="student_available_course">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_c__stude__4F7CD00D">
+          <End Role="student" Type="Self.student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_case_report" Type="Self.student_case_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="student_case_report">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_d__stude__5535A963">
+          <End Role="student" Type="Self.student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_degree" Type="Self.student_degree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="student_degree">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Student_Affairs_SystemEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin_student" EntityType="Self.admin_student" />
+          <EntitySet Name="administration_staff" EntityType="Self.administration_staff" />
+          <EntitySet Name="courses" EntityType="Self.course" />
+          <EntitySet Name="prequest_course" EntityType="Self.prequest_course" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="student_available_course" EntityType="Self.student_available_course" />
+          <EntitySet Name="student_case_report" EntityType="Self.student_case_report" />
+          <EntitySet Name="student_degree" EntityType="Self.student_degree" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__admin_stu__admin__693CA210" Association="Self.FK__admin_stu__admin__693CA210">
+            <End Role="administration_staff" EntitySet="administration_staff" />
+            <End Role="admin_student" EntitySet="admin_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__admin_stu__stude__68487DD7" Association="Self.FK__admin_stu__stude__68487DD7">
+            <End Role="student" EntitySet="students" />
+            <End Role="admin_student" EntitySet="admin_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__prequest___cours__66603565" Association="Self.FK__prequest___cours__66603565">
+            <End Role="course" EntitySet="courses" />
+            <End Role="prequest_course" EntitySet="prequest_course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__prequest___pre_I__656C112C" Association="Self.FK__prequest___pre_I__656C112C">
+            <End Role="course" EntitySet="courses" />
+            <End Role="prequest_course" EntitySet="prequest_course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_c__cours__5070F446" Association="Self.FK__student_c__cours__5070F446">
+            <End Role="course" EntitySet="courses" />
+            <End Role="student_case_report" EntitySet="student_case_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_d__cours__5629CD9C" Association="Self.FK__student_d__cours__5629CD9C">
+            <End Role="course" EntitySet="courses" />
+            <End Role="student_degree" EntitySet="student_degree" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_a__stude__52593CB8" Association="Self.FK__student_a__stude__52593CB8">
+            <End Role="student" EntitySet="students" />
+            <End Role="student_available_course" EntitySet="student_available_course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_c__stude__4F7CD00D" Association="Self.FK__student_c__stude__4F7CD00D">
+            <End Role="student" EntitySet="students" />
+            <End Role="student_case_report" EntitySet="student_case_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_d__stude__5535A963" Association="Self.FK__student_d__stude__5535A963">
+            <End Role="student" EntitySet="students" />
+            <End Role="student_degree" EntitySet="student_degree" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Student_Affairs_SystemModelStoreContainer" CdmEntityContainer="Student_Affairs_SystemEntities1">
+          <EntitySetMapping Name="admin_student">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.admin_student">
+              <MappingFragment StoreEntitySet="admin_student">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+                <ScalarProperty Name="administration_staff_ID" ColumnName="administration_staff_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="administration_staff">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.administration_staff">
+              <MappingFragment StoreEntitySet="administration_staff">
+                <ScalarProperty Name="administration_staff_ID" ColumnName="administration_staff_ID" />
+                <ScalarProperty Name="administration_staff_name" ColumnName="administration_staff_name" />
+                <ScalarProperty Name="administration_staff_national_ID" ColumnName="administration_staff_national_ID" />
+                <ScalarProperty Name="administration_staff_password" ColumnName="administration_staff_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.course">
+              <MappingFragment StoreEntitySet="course">
+                <ScalarProperty Name="course_code" ColumnName="course_code" />
+                <ScalarProperty Name="course_name" ColumnName="course_name" />
+                <ScalarProperty Name="course_level" ColumnName="course_level" />
+                <ScalarProperty Name="course_semester" ColumnName="course_semester" />
+                <ScalarProperty Name="doctor_name" ColumnName="doctor_name" />
+                <ScalarProperty Name="course_hours" ColumnName="course_hours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prequest_course">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.prequest_course">
+              <MappingFragment StoreEntitySet="prequest_course">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="pre_ID" ColumnName="pre_ID" />
+                <ScalarProperty Name="course_ID" ColumnName="course_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+                <ScalarProperty Name="student_name" ColumnName="student_name" />
+                <ScalarProperty Name="student_national_ID" ColumnName="student_national_ID" />
+                <ScalarProperty Name="student_level" ColumnName="student_level" />
+                <ScalarProperty Name="student_age" ColumnName="student_age" />
+                <ScalarProperty Name="student_phone" ColumnName="student_phone" />
+                <ScalarProperty Name="student_adress" ColumnName="student_adress" />
+                <ScalarProperty Name="student_email" ColumnName="student_email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student_available_course">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.student_available_course">
+              <MappingFragment StoreEntitySet="student_available_course">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+                <ScalarProperty Name="course_ID" ColumnName="course_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student_case_report">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.student_case_report">
+              <MappingFragment StoreEntitySet="student_case_report">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+                <ScalarProperty Name="course_ID" ColumnName="course_ID" />
+                <ScalarProperty Name="total_degree" ColumnName="total_degree" />
+                <ScalarProperty Name="GPA" ColumnName="GPA" />
+                <ScalarProperty Name="appreciation" ColumnName="appreciation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student_degree">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.student_degree">
+              <MappingFragment StoreEntitySet="student_degree">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+                <ScalarProperty Name="course_ID" ColumnName="course_ID" />
+                <ScalarProperty Name="activites" ColumnName="activites" />
+                <ScalarProperty Name="practical" ColumnName="practical" />
+                <ScalarProperty Name="final" ColumnName="final" />
+                <ScalarProperty Name="appreciation" ColumnName="appreciation" />
+                <ScalarProperty Name="midterm" ColumnName="midterm" />
+                <ScalarProperty Name="GPA" ColumnName="GPA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Student_Affairs_SystemModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

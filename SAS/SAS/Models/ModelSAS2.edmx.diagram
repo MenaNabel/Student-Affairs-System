@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7713da8b39ce4842961d23d1cf1e0bcf" Name="Diagram1">
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.admin_student" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.administration_staff" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.course" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.prequest_course" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.student" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.student_available_course" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.student_case_report" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.student_degree" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Student_Affairs_SystemModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__admin_stu__admin__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__admin_stu__stude__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__prequest___cours__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__prequest___pre_I__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__student_c__cours__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__student_d__cours__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__student_a__stude__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__student_c__stude__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK__student_d__stude__5535A963" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

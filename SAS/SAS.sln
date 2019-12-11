@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAS", "SAS\SAS.csproj", "{042E63EA-CD56-4D29-88A2-88591C94F043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAS.Tests", "SAS.Tests\SAS.Tests.csproj", "{1DBAA2F7-F531-405A-B332-0032DE0933EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{042E63EA-CD56-4D29-88A2-88591C94F043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042E63EA-CD56-4D29-88A2-88591C94F043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042E63EA-CD56-4D29-88A2-88591C94F043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042E63EA-CD56-4D29-88A2-88591C94F043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DBAA2F7-F531-405A-B332-0032DE0933EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DBAA2F7-F531-405A-B332-0032DE0933EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DBAA2F7-F531-405A-B332-0032DE0933EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DBAA2F7-F531-405A-B332-0032DE0933EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF7D37CE-4558-4F22-85BD-9A6E5E82B8A1}
+	EndGlobalSection
+EndGlobal

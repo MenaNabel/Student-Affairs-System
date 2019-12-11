@@ -1,0 +1,44 @@
+﻿@model SAS.Models.student
+@{
+    ViewBag.Title = "editInformationStudent";
+    Layout = "~/Views/Shared/_LayoutUniversity.cshtml";
+}
+
+<section class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="form-wrap">
+                    <h2 class="mb-5">Register new account</h2>
+                    <form action="~/studentInformation/editInformationStudent/@Model.student_ID" method="post">
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="student_name" class="form-control py-2" placeholder="@Model.student_name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Phone</label>
+                                <input type="text" name="student_phone" class="form-control py-2 " placeholder="@Model.student_phone">
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Adress</label>
+                                <input type="text" name="student_adress" class="form-control py-2" placeholder="@Model.student_adress">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input type="submit" value="Register" class="btn btn-primary px-5 py-2">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
