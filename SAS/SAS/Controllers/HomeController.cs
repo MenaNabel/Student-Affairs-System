@@ -13,6 +13,11 @@ namespace SAS.Controllers
             return View();
         }
 
+        public ActionResult AssiutUniversity()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -14,6 +14,11 @@ namespace SAS.Controllers
         {
             List<course> courses = context.courses.ToList();
             return View(courses);
+
+        }
+        public ActionResult test()
+        {
+            return PartialView();
         }
     }
 }

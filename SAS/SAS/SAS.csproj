@@ -333,6 +333,10 @@
     <Content Include="Views\administrationStaffOperations\Index.cshtml" />
     <Content Include="Views\coursesDetails\displayAllCourses.cshtml" />
     <Content Include="Views\Shared\_LayoutUniversity.cshtml" />
+    <Content Include="Views\Shared\_PartialSearchCourse.cshtml" />
+    <Content Include="Views\Home\AssiutUniversity.cshtml" />
+    <Content Include="Views\Shared\_PartialWelcoming.cshtml" />
+    <Content Include="Views\Shared\_PartialPopularCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

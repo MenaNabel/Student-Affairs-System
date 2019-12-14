@@ -1,97 +1,123 @@
 ﻿@model List<SAS.Models.course>
 
-    @{
+@{
     ViewBag.Title = "displayAllCourses";
     Layout = "~/Views/Shared/_LayoutUniversity.cshtml";
-    }
+}
 
-    <h2>Display All Courses</h2>
-    @{
+<h2>Display All Courses</h2>
+@{
     foreach (var item in Model)
     {
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => item.course_name)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => item.course_name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => item.course_name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.course_name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => item.course_level)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => item.course_level)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => item.course_level)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.course_level)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => item.course_semester)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => item.course_semester)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => item.course_semester)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.course_semester)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => item.doctor_name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => item.doctor_name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => item.doctor_name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.doctor_name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => item.course_hours)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => item.course_hours)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => item.course_hours)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.course_hours)
+            </dd>
 
-    </dl>
+        </dl>
+        }
     }
-    }
-    @*<div>
-        <h4>course</h4>
-        <hr />
-    </div>
+    <section class="site-section bg-light element-animate" id="section-counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <figure><img src="images/img_2_b.jpg" alt="Image placeholder" class="img-fluid"></figure>
+                </div>
+                <div class="col-lg-5 ml-auto">
+                    <div class="block-15">
+                        <div class="heading">
+                            <h2>Education is Life</h2>
+                        </div>
+                        <div class="text mb-5">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quibusdam nisi eos accusantium eligendi velit deleniti nihil ad deserunt rerum incidunt.</p>
+                        </div>
+                    </div>
 
-    <div>
-        <article>
-            <table>
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">#</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Level</th>
-                        <th scope="col">Semester</th>
-                        <th scope="col">Doctor</th>
-                        <th scope="col">Hours</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                    int i = 1;
-                    foreach (var item in Model)
-                    {
-                    <tr class="text-center">
-                        <th scope="row">@i</th>
-                        <td>@item.course_code</td>
-                        <td>@item.course_name</td>
-                        <td>@item.course_level</td>
-                        <td>@item.course_semester</td>
-                        <td>@item.doctor_name</td>
-                        <td>@item.course_hours</td>
-                        <td><i class="fas fa-check"></i></td>
-                        @{
-                        i++;
-                        }
-                    </tr>
-                    }
-                    }
-            </table>
-        </article>
-    </div>*@
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="block-18 d-flex align-items-center">
+                                <div class="icon mr-4">
+                                    <span class="flaticon-student"></span>
+                                </div>
+                                <div class="text">
+                                    <strong class="number" data-number="12921">0</strong>
+                                    <span>Students</span>
+                                </div>
+                            </div>
+
+                            <div class="block-18 d-flex align-items-center">
+                                <div class="icon mr-4">
+                                    <span class="flaticon-university"></span>
+                                </div>
+                                <div class="text">
+                                    <strong class="number" data-number="51">0</strong>
+                                    <span>Schools</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="block-18 d-flex align-items-center">
+                                <div class="icon mr-4">
+                                    <span class="flaticon-books"></span>
+                                </div>
+                                <div class="text">
+                                    <strong class="number" data-number="3902">0</strong>
+                                    <span>Books</span>
+                                </div>
+                            </div>
+
+                            <div class="block-18 d-flex align-items-center">
+                                <div class="icon mr-4">
+                                    <span class="flaticon-mortarboard"></span>
+                                </div>
+                                <div class="text">
+                                    <strong class="number" data-number="1921">0</strong>
+                                    <span>Graduates</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section -->

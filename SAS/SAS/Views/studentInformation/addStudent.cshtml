@@ -9,8 +9,8 @@
             <div class="col-md-7 text-center">
 
                 <div class="mb-5 element-animate">
-                    <h1 class="mb-2">Register</h1>
-                    <p class="bcrumb"><a href="index.html">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Register</span></p>
+                    <h1 class="mb-2">REGISTER</h1>
+                    <p class="bcrumb"><a href="~/Home/AssiutUniversity">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Register</span></p>
                 </div>
 
             </div>
@@ -30,19 +30,19 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="name">ID</label>
-                                <input type="text" name="student_ID" class="form-control py-2">
+                                <input type="text" name="student_ID" class="form-control py-2" required pattern="[0-9]{9}" size="9" placeholder="Please  Enter 9-digit only">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="name">Name</label>
-                                <input type="text" name="student_name" class="form-control py-2">
+                                <input type="text" name="student_name" class="form-control py-2" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="name">National ID</label>
-                                <input type="text" name="student_national_ID" class="form-control py-2">
+                                <input type="text" name="student_national_ID" class="form-control py-2" required pattern="[0-9]{14}" size="14">
                             </div>
                         </div>
                         <div class="row">
@@ -53,8 +53,15 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
+                                <label for="Email">Email</label>
+                                <input type="email" name="student_national_ID" class="form-control py-2" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
                                 <label for="name">Phone</label>
-                                <input type="text" name="student_phone" class="form-control py-2 ">
+                                <input type="text" name="student_phone" class="form-control py-2 " pattern="[0-5]{3}-[0-9]{3}-[0-9]{5}">
                             </div>
                         </div>
                         <div class="row mb-5">
