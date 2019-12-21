@@ -5,34 +5,25 @@
 
                 <div class="mb-5 element-animate">
                     <div class="block-17">
-                        <h2 class="heading text-center mb-4">Find Oneline Courses That Suits You</h2>
-                        <form action="" method="post" class="d-block d-lg-flex mb-4">
+                        <h2 class="heading text-center mb-4">Find Course</h2>
+                        <form action="~/Home/SearchCoures" method="get" class="d-block d-lg-flex mb-4">
                             <div class="fields d-block d-lg-flex">
-                                <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Keyword search..."></div>
+                                <div class="textfield-search one-third"><input type="text" name="courseName" class="form-control" placeholder="Course Name"></div>
+                                <div class="textfield-search one-third"><input type="text" name="doctorName" class="form-control" placeholder="Doctor Name"></div>
                                 <div class="select-wrap one-third">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Category Course</option>
-                                        <option value="">Laravel</option>
-                                        <option value="">PHP</option>
-                                        <option value="">JavaScript</option>
-                                        <option value="">Python</option>
-                                    </select>
-                                </div>
-                                <div class="select-wrap one-third">
-                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Difficulty</option>
-                                        <option value="">Beginner</option>
-                                        <option value="">Intermediate</option>
-                                        <option value="">Advance</option>
+                                    <select name="level" id="" class="form-control">
+                                        <option value="" disabled selected>Level</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="2">3</option>
                                     </select>
                                 </div>
                             </div>
                             <input type="submit" class="search-submit btn btn-primary" value="Search">
                         </form>
-                        <p class="text-center mb-5">We have more than 500 courses to improve your skills</p>
-                        <p class="text-center"><a href="#" class="btn py-3 px-5">Register Now</a></p>
+                        <p class="text-center mb-5">We have more than 100 courses to improve your skills</p>
+                        <p class="text-center"><a href="~/Home/registerAsStudent" class="btn py-3 px-5">Register Now</a></p>
                     </div>
                 </div>
 

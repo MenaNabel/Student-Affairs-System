@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "addStudent";
+    Layout = "~/Views/Shared/_LayoutUniversity.cshtml";
+}
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/big_image_2.jpg);">
+    <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-sm-inner">
+            <div class="col-md-7 text-center">
+
+                <div class="mb-5 element-animate">
+                    <h1 class="mb-2">Insert</h1>
+                    <p class="bcrumb"><a href="~/Home/AssiutUniversity">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span> Degree <span class="current"></span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+
+<section class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="form-wrap">
+                    <h2 class="mb-5">Insert degree for student</h2>
+                    <form action="~/administrationStaffOperations/insertDegreesToStudent" method="post">
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">ID</label>
+                                <input type="text" name="student_ID" class="form-control py-2" required pattern="[0-9]{9}" size="9" title="Please  Enter 9-digit only">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Course code</label>
+                                <input type="text" name="course_ID" class="form-control py-2" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{2,}" size="10" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Activites Degree</label>
+                                <input type="number" name="activites" class="form-control py-2" required max="50">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Practical Degree</label>
+                                <input type="number" name="practical" class="form-control py-2">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Midterm Degree</label>
+                                <input type="number" name="midterm" class="form-control py-2" required max="50">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Final Degree</label>
+                                <input type="number" name="final" class="form-control py-2" required max="50">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input type="submit" value="Insert" class="btn btn-primary px-5 py-2">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

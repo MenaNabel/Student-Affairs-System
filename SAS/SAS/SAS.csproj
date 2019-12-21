@@ -176,6 +176,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\studentInformationController.cs" />
     <Compile Include="Controllers\studentServicesController.cs" />
+    <Compile Include="CoursesAvailable.cs" />
+    <Compile Include="CoursesFCI.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,6 +229,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CoursesAvailabelToStudentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
@@ -238,6 +241,7 @@
     <Content Include="Content\myContent\animate.css" />
     <Content Include="Content\myContent\bootstrap.css" />
     <Content Include="Content\myContent\magnific-popup.css" />
+    <Content Include="Content\myContent\mainTable.css" />
     <Content Include="Content\myContent\owl.carousel.min.css" />
     <Content Include="Content\myContent\style.css" />
     <Content Include="Content\owl.carousel.min.css" />
@@ -247,6 +251,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\big_image_2.jpg" />
+    <Content Include="images\FCI.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\myContent\bootstrap.css.map" />
@@ -287,6 +292,7 @@
     <Content Include="Scripts\myScripts\jquery.stellar.min.js" />
     <Content Include="Scripts\myScripts\jquery.waypoints.min.js" />
     <Content Include="Scripts\myScripts\main.js" />
+    <Content Include="Scripts\myScripts\mainTable.js" />
     <Content Include="Scripts\myScripts\owl.carousel.min.js" />
     <Content Include="Scripts\myScripts\popper.min.js" />
     <Content Include="Web.config" />
@@ -300,7 +306,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -337,12 +342,20 @@
     <Content Include="Views\Home\AssiutUniversity.cshtml" />
     <Content Include="Views\Shared\_PartialWelcoming.cshtml" />
     <Content Include="Views\Shared\_PartialPopularCourses.cshtml" />
+    <Content Include="Views\administrationStaffOperations\getStudent.cshtml" />
+    <Content Include="Views\administrationStaffOperations\ShowAllCoursesAvailable.cshtml" />
+    <Content Include="Views\studentServices\toGetstudentInformation.cshtml" />
+    <Content Include="Views\studentServices\GetstudentInformation.cshtml" />
+    <Content Include="Views\Home\SearchCoures.cshtml" />
+    <Content Include="Views\Home\registerAsStudent.cshtml" />
+    <Content Include="Views\Home\aboutUniversity.cshtml" />
+    <Content Include="Views\Shared\_PartialSearchStudent.cshtml" />
+    <Content Include="Views\administrationStaffOperations\insertDegreesToStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="Content\ContentTable\" />
     <Folder Include="Views\addCourse\" />
-    <Folder Include="Views\studentServices\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

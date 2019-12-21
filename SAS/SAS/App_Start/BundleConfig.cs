@@ -20,7 +20,8 @@ namespace SAS
             "~/Scripts/myScripts/jquery.stellar.min.js",
             "~/Scripts/myScripts/jquery.animateNumber.min.js",
             "~/Scripts/myScripts/jquery.magnific-popup.min.js",
-            "~/Scripts/myScripts/main.js"
+            "~/Scripts/myScripts/main.js" ,
+            "~/Scripts/myScripts/mainTable.js"
 
             ));
 
@@ -48,7 +49,8 @@ namespace SAS
                 "~/Content/myContent/bootstrap.css" ,
                 "~/Content/myContent/animate.css",
                 "~/Content/myContent/owl.carousel.min.css",
-                "~/Content/myContent/style.css"
+                "~/Content/myContent/style.css" 
+                //"~/Content/myContent/mainTable.css"
                 ));
         }
     }

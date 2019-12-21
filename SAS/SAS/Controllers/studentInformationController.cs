@@ -39,6 +39,7 @@ namespace SAS.Controllers
                 newStudent.student_email = newRecord.student_email;
                 context.students.Add(newStudent);
                 context.SaveChanges();
+                CoursesAvailable.CoursesAvailableForStudent(newStudent.student_ID);
                 return RedirectToAction("operationsucceeded");
             }
             return RedirectToAction("addStudent");
@@ -69,6 +70,7 @@ namespace SAS.Controllers
                 if (editRecord.student_phone != null)
                     editRecordStudent.student_phone = editRecord.student_phone;
                 context.SaveChanges();
+
                 return RedirectToAction("operationsucceeded");
             
         }

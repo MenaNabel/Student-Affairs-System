@@ -1,0 +1,34 @@
+﻿@model SAS.ViewModels.CoursesAvailabelToStudentViewModel
+@{
+    ViewBag.Title = "ShowAllCoursesAvailable";
+    Layout = "~/Views/Shared/_LayoutUniversity.cshtml";
+}
+
+<h2>Show AllCourses Available</h2>
+
+<form method="get" action="~/administrationStaffOperations/registerToStudent/@Model.student.student_ID">
+    @*@{
+        foreach (var item in Model.coursesAvailable)
+        {
+            <input type="checkbox" name="coursesAvailableList" value="true">@item.course_name<br />
+        }
+    }*@
+    <div class="select-wrap one-third">
+        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+        <select name="coursesAvailableList" id="" class="form-control" multiple>
+            @{
+                foreach (var item in Model.coursesAvailable)
+                {
+                    <option value="@item.course_name">@item.course_name</option>
+
+                }
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="Register" />
+</form>
+
+<a href="~/home/Index">Home</a>
+
+

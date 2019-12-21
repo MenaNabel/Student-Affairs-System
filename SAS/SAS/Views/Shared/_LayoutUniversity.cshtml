@@ -15,16 +15,13 @@
     <header role="banner">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand absolute" href="index.html">ASSiut University</a>
+                <a class="navbar-brand absolute" href="~/Home/AssiutUniversity">ASSiut University</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Home</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student information</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -38,8 +35,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration staff operations</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown05">
                                 <a class="dropdown-item" href="~/administrationStaffOperations/addCourse">Add Course</a>
-                                <a class="dropdown-item" href="#">Registration of courses for student</a>
-                                <a class="dropdown-item" href="#">Insert the students’ degrees</a>
+                                <a class="dropdown-item" href="~/administrationStaffOperations/getStudent">Registration of courses for student</a>
+                                <a class="dropdown-item" href="~/administrationStaffOperations/insertDegreesToStudent">Insert the students’ degrees</a>
                             </div>
 
                         </li>
@@ -47,7 +44,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student services</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown05">
-                                <a class="dropdown-item" href="~/administrationStaff/addCourse">Student  information</a>
+                                <a class="dropdown-item" href="~/studentServices/toGetstudentInformation">Student  information</a>
                                 <a class="dropdown-item" href="#">Semester details </a>
                                 <a class="dropdown-item" href="#">Case report </a>
                             </div>
@@ -56,6 +53,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="~/coursesDetails/displayAllCourses">Courses Details</a>
                         </li>
+                        <li class="nav-item">
+                            @Html.Partial("_LoginPartial")
+                        </li>
+
                     </ul>
 
                 </div>

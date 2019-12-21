@@ -1,0 +1,75 @@
+﻿@model SAS.Models.student
+
+@{
+    ViewBag.Title = "GetstudentInformation";
+    Layout = "~/Views/Shared/_LayoutUniversity.cshtml";
+}
+
+<h2>GetstudentInformation</h2>
+
+<div>
+    <h4>student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.student_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_national_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_national_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_adress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_adress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.student_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
