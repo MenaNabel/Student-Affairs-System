@@ -23,6 +23,7 @@
         <AssociationConnector Association="Student_Affairs_SystemModel.FK__student_a__stude__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="Student_Affairs_SystemModel.FK__student_c__stude__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="Student_Affairs_SystemModel.FK__student_d__stude__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="Student_Affairs_SystemModel.FK_student_available_course_course" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

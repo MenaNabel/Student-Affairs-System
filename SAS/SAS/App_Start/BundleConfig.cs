@@ -52,6 +52,9 @@ namespace SAS
                 "~/Content/myContent/style.css" 
                 //"~/Content/myContent/mainTable.css"
                 ));
+            bundles.Add(new StyleBundle("~/Content/ErrorStyle").Include(
+                "~/Content/Errors/style.css"
+                ));
         }
     }
 }

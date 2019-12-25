@@ -2,8 +2,24 @@
 
 @{
     ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_LayoutPageError.cshtml";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404">
+            <h1>O<span>P</span>S</h1>
+        </div>
+        <h1 class="text-danger">Error.</h1>
+        <h2 class="text-danger">An error occurred while processing your request.</h2>
+        url Control : @Model.ControllerName
+        <br>
+        page : @Model.ActionName
+        <br>
+        Exception : @Model.Exception.Message
+        <a href="~/Home/AssiutUniversity">home page</a>
+    </div>
+</div>
+
 

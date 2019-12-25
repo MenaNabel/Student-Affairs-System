@@ -35,6 +35,7 @@ namespace SAS.Controllers
                 newStudent.student_age = newRecord.student_age;
                 newStudent.student_adress = newRecord.student_adress;
                 newStudent.student_level = 1;
+                newStudent.student_term = 1;
                 newStudent.student_phone = newRecord.student_phone;
                 newStudent.student_email = newRecord.student_email;
                 context.students.Add(newStudent);

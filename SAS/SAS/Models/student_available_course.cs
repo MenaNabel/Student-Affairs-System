@@ -19,5 +19,6 @@ namespace SAS.Models
         public string course_ID { get; set; }
     
         public virtual student student { get; set; }
+        public virtual course course { get; set; }
     }
 }

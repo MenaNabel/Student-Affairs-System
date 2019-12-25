@@ -3,43 +3,93 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/images/logo.jpg">
+    
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/CustomStyle")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+    <!-- Start header -->
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand absolute" href="~/Home/AssiutUniversity">ASSiut University</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                @Html.ActionLink("ASSIUT UNIVERSTY", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student information</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="~/studentInformation/addStudent">Add new student</a>
+                                <a class="dropdown-item" href="~/studentInformation/toEditInformationStudent">Update student information</a>
+                            </div>
+
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration staff operations</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown05">
+                                <a class="dropdown-item" href="~/administrationStaffOperations/addCourse">Add Course</a>
+                                <a class="dropdown-item" href="~/administrationStaffOperations/getStudent">Registration of courses for student</a>
+                                <a class="dropdown-item" href="~/administrationStaffOperations/insertDegreesToStudent">Insert the students’ degrees</a>
+                            </div>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/studentServices/toGetstudentInformation">Student Servecis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/coursesDetails/displayAllCourses">Courses Details</a>
+                        </li>
+                        <li class="nav-item">
+                            @Html.Partial("_LoginPartial")
+                        </li>
+
+                    </ul>
+
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Student information", "Index", "studentInformation")</li>
-                    <li>@Html.ActionLink("Administration staff operations", "Index", "AdministrationStaffOperations")</li>
-                    <li>@Html.ActionLink("Courses Details", "displayAllCourses", "coursesDetails")</li>
-                    <li>@Html.ActionLink("Student services", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+        </nav>
+    </header>
+    <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/background.jpg);">
+        <div class="container">
+            <div class="row align-items-center justify-content-center site-hero-sm-inner">
+                <div class="col-md-7 text-center">
+
+                    <div class="mb-5 element-animate">
+                        <h1 class="mb-2">@ViewBag.Title</h1>
+                        <p class="bcrumb"><a href="~/Home/AssiutUniversity">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>Admin<span class="current"></span></p>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- END section -->
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - BRAND YOUR SELF</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214" /></svg></div>
+    <!-- END header -->
+    <!--Scripts-->
+    <!--jquery-->
+    @Scripts.Render("~/mybundles/jquery")
+    <!--Bootstrap js-->
+    @Scripts.Render("~/bundles/mybootstrap")
+
 </body>
 </html>

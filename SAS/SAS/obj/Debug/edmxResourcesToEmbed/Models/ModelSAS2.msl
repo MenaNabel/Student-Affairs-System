@@ -44,6 +44,7 @@
     <EntitySetMapping Name="students">
       <EntityTypeMapping TypeName="Student_Affairs_SystemModel.student">
         <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="student_term" ColumnName="student_term" />
           <ScalarProperty Name="student_ID" ColumnName="student_ID" />
           <ScalarProperty Name="student_name" ColumnName="student_name" />
           <ScalarProperty Name="student_national_ID" ColumnName="student_national_ID" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Student_Affairs_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Student_Affairs_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin_student">
           <Key>
             <PropertyRef Name="ID" />
@@ -53,6 +53,7 @@
           <Property Name="student_phone" Type="varchar" MaxLength="11" />
           <Property Name="student_adress" Type="varchar" MaxLength="255" />
           <Property Name="student_email" Type="varchar" MaxLength="255" />
+          <Property Name="student_term" Type="int" />
         </EntityType>
         <EntityType Name="student_available_course">
           <Key>
@@ -221,6 +222,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_student_available_course_course">
+          <End Role="course" Type="Self.course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="student_available_course" Type="Self.student_available_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="student_available_course">
+              <PropertyRef Name="course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Student_Affairs_SystemModelStoreContainer">
           <EntitySet Name="admin_student" EntityType="Self.admin_student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="administration_staff" EntityType="Self.administration_staff" Schema="dbo" store:Type="Tables" />
@@ -267,9 +282,12 @@
             <End Role="student" EntitySet="student" />
             <End Role="student_degree" EntitySet="student_degree" />
           </AssociationSet>
+          <AssociationSet Name="FK_student_available_course_course" Association="Self.FK_student_available_course_course">
+            <End Role="course" EntitySet="course" />
+            <End Role="student_available_course" EntitySet="student_available_course" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Student_Affairs_SystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -307,6 +325,7 @@
           <NavigationProperty Name="prequest_course1" Relationship="Self.FK__prequest___pre_I__656C112C" FromRole="course" ToRole="prequest_course" />
           <NavigationProperty Name="student_case_report" Relationship="Self.FK__student_c__cours__5070F446" FromRole="course" ToRole="student_case_report" />
           <NavigationProperty Name="student_degree" Relationship="Self.FK__student_d__cours__5629CD9C" FromRole="course" ToRole="student_degree" />
+          <NavigationProperty Name="student_available_course" Relationship="Student_Affairs_SystemModel.FK_student_available_course_course" FromRole="course" ToRole="student_available_course" />
         </EntityType>
         <EntityType Name="prequest_course">
           <Key>
@@ -334,6 +353,7 @@
           <NavigationProperty Name="student_available_course" Relationship="Self.FK__student_a__stude__52593CB8" FromRole="student" ToRole="student_available_course" />
           <NavigationProperty Name="student_case_report" Relationship="Self.FK__student_c__stude__4F7CD00D" FromRole="student" ToRole="student_case_report" />
           <NavigationProperty Name="student_degree" Relationship="Self.FK__student_d__stude__5535A963" FromRole="student" ToRole="student_degree" />
+          <Property Name="student_term" Type="Int32" />
         </EntityType>
         <EntityType Name="student_available_course">
           <Key>
@@ -343,6 +363,7 @@
           <Property Name="student_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="course_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="student" Relationship="Self.FK__student_a__stude__52593CB8" FromRole="student_available_course" ToRole="student" />
+          <NavigationProperty Name="course" Relationship="Student_Affairs_SystemModel.FK_student_available_course_course" FromRole="student_available_course" ToRole="course" />
         </EntityType>
         <EntityType Name="student_case_report">
           <Key>
@@ -553,7 +574,25 @@
             <End Role="student" EntitySet="students" />
             <End Role="student_degree" EntitySet="student_degree" />
           </AssociationSet>
+          <AssociationSet Name="FK_student_available_course_course" Association="Student_Affairs_SystemModel.FK_student_available_course_course">
+            <End Role="course" EntitySet="courses" />
+            <End Role="student_available_course" EntitySet="student_available_course" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_student_available_course_course">
+          <End Type="Student_Affairs_SystemModel.course" Role="course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Student_Affairs_SystemModel.student_available_course" Role="student_available_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_code" />
+            </Principal>
+            <Dependent Role="student_available_course">
+              <PropertyRef Name="course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -603,6 +642,7 @@
           <EntitySetMapping Name="students">
             <EntityTypeMapping TypeName="Student_Affairs_SystemModel.student">
               <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="student_term" ColumnName="student_term" />
                 <ScalarProperty Name="student_ID" ColumnName="student_ID" />
                 <ScalarProperty Name="student_name" ColumnName="student_name" />
                 <ScalarProperty Name="student_national_ID" ColumnName="student_national_ID" />

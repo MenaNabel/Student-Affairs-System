@@ -18,6 +18,7 @@ namespace SAS.Controllers
             return View();
         }
         [HttpGet]
+        
         public ActionResult addCourse()
         {
             return View();
@@ -74,13 +75,13 @@ namespace SAS.Controllers
             {
                 CoursesAvailabelToStudentViewModel CAS2 = new CoursesAvailabelToStudentViewModel();
                 CAS2.student = context.students.FirstOrDefault(s => s.student_ID == id);
-                if (CAS2.student != null)
-                {
+                //if (CAS2.student != null)
+                //{
                     CAS2.coursesAvailable = (from c in context.student_available_course
                                              where c.student_ID == id
                                              select context.courses.FirstOrDefault(CA => CA.course_code == c.course_ID)).ToList();
                     return View(CAS2);
-                }
+                //}
             }
             return View("getStudent");
             
@@ -107,7 +108,7 @@ namespace SAS.Controllers
 
 
         [HttpPost]
-        public ActionResult insertDegreesToStudent(student_degree SD)
+        public ActionResult insertDegreesToStudent(student_degree SD , string status)
         {
             if(context.students.FirstOrDefault(s=>s.student_ID == SD.student_ID) != null && context.courses.FirstOrDefault(c => c.course_code == SD.course_ID) != null && (SD.activites + SD.midterm + SD.practical <= 50) && (SD.activites + SD.final + SD.midterm + SD.practical <= 100))
             {
@@ -122,6 +123,10 @@ namespace SAS.Controllers
                     student_available_course RemoveCourse = context.student_available_course.FirstOrDefault(c => c.course_ID == newSD.course_ID);
                     context.student_available_course.Remove(RemoveCourse);
                     context.SaveChanges();
+                }
+                if(status == "true")
+                {
+
                 }
                 return RedirectToAction("../studentInformation/operationsucceeded");
 

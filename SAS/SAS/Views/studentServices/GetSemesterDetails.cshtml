@@ -1,0 +1,84 @@
+﻿@model SAS.ViewModels.CoursesStudentsViewModel
+@{
+    ViewBag.Title = "GetSemesterDetails";
+    Layout = "~/Views/Shared/_LayoutUniversity.cshtml";
+}
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background: url(/images/background.jpg) no-repeat  fixed; background-size: cover;">
+    <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-sm-inner">
+            <div class="col-md-7 text-center">
+
+                <div class="mb-5 element-animate">
+                    <h1 class="mb-2">Semster</h1>
+                    <p class="bcrumb"><a href="~/Home/AssiutUniversity">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Details</span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+
+<section class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayName("Course")
+                    </th>
+                    <th>
+                        @Html.DisplayName("ActivitesDegree")
+                    </th>
+                    <th>
+                        @Html.DisplayName("PraticalDegree")
+                    </th>
+                    <th>
+                        @Html.DisplayName("MidtermDegree")
+                    </th>
+                    <th>
+                        @Html.DisplayName("FinalDegree")
+                    </th>
+                    <th>
+                        @Html.DisplayName("appreciation")
+                    </th>
+                    <th>
+                        @Html.DisplayName("GPA")
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.courses)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivitesDegree)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PraticalDegree)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MidtermDegree)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FinalDegree)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.appreciation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GPA)
+                        </td>
+
+
+                    </tr>
+                }
+
+            </table>
+            </div>
+</div>
+</section>

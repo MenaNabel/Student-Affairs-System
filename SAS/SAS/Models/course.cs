@@ -21,6 +21,7 @@ namespace SAS.Models
             this.prequest_course1 = new HashSet<prequest_course>();
             this.student_case_report = new HashSet<student_case_report>();
             this.student_degree = new HashSet<student_degree>();
+            this.student_available_course = new HashSet<student_available_course>();
         }
     
         public string course_code { get; set; }
@@ -38,5 +39,7 @@ namespace SAS.Models
         public virtual ICollection<student_case_report> student_case_report { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<student_degree> student_degree { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<student_available_course> student_available_course { get; set; }
     }
 }

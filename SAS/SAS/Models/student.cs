@@ -31,6 +31,7 @@ namespace SAS.Models
         public string student_phone { get; set; }
         public string student_adress { get; set; }
         public string student_email { get; set; }
+        public Nullable<int> student_term { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<admin_student> admin_student { get; set; }

@@ -37,5 +37,17 @@ namespace SAS
             }
         }
 
+        public static void EndTerm(student_degree SD)
+        {
+            student_case_report SCR = new student_case_report() { student_ID = SD.student_ID, course_ID = SD.course_ID, appreciation = SD.appreciation, GPA = SD.GPA.Value, total_degree = (SD.midterm.Value + SD.practical.Value + SD.activites.Value + SD.final.Value)};
+            context.student_case_report.Add(SCR);
+            if(SD.student.student_term == 1)
+                //ممكن تطلع غلط
+                SD.student.student_term++;
+            else
+                SD.student.student_level++;
+            context.SaveChanges();
+        }
+
     }
 }
