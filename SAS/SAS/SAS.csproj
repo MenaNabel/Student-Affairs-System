@@ -258,6 +258,7 @@
     <Content Include="images\BG.jpg" />
     <Content Include="images\big_image_2.jpg" />
     <Content Include="images\FCI.jpg" />
+    <Content Include="images\img_1.jpg" />
     <Content Include="images\logo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
